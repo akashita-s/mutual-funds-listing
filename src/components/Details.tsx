@@ -36,7 +36,7 @@ function Details() {
 
   useEffect(() => {
     fundData();
-  }, []);
+  },);
 
   const dispatch = useDispatch();
   return (

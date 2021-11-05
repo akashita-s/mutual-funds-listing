@@ -16,7 +16,7 @@ const Card = ({ name, link }: any) => {
       }}
     >
       <div className={styles.image}>
-        <Image src="/stox.png" alt="image" height={50} width={50} />
+        <Image src="/stox.png" alt="image" height={50} width={50}  />
       </div>
       <div>
         <h3>{name}</h3>

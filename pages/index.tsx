@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import SignUp from "../src/components/SignUp";
 import Dashboard from "../src/components/Dashboard";
 import Details from "../src/components/Details";
+import Footer from "../src/components/Footer";
 
 const Home: NextPage = () => {
   const currentStep = useSelector((state: any) => state.step.value);
@@ -16,7 +17,7 @@ const Home: NextPage = () => {
     if (currentStep == "login") return <Login />;
     if (currentStep == "signup") return <SignUp />;
     if (currentStep == "details") return <Details />;
-    else return <Dashboard/>;
+    else return <Dashboard />;
   };
 
   return (
@@ -28,6 +29,7 @@ const Home: NextPage = () => {
       <div className={styles.container}>
         <Navigation />
         <Step />
+        <Footer />
       </div>
     </div>
   );
