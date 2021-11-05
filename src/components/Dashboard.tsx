@@ -11,7 +11,7 @@ function Dashboard() {
       <h1>Good Morning, {user.name}!</h1>
       <h3 className={styles.subHeading}>Your list of Mutual Funds:</h3>
       {list.map((item) => (
-        <Card key={item.key} name={item.name} />
+        <Card key={item.key} name={item.name} link={item.link} />
       ))}
     </div>
   );
