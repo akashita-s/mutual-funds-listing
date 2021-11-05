@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../styles/Dashboard.module.css";
-import Card from "./Card";
+import Card from "./subComponents/Card";
 import { useSelector } from "react-redux";
 import { list } from "../data/data";
 

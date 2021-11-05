@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "../../styles/Dashboard.module.css";
+import styles from "../../../styles/Dashboard.module.css";
 import { useDispatch } from "react-redux";
-import { changeStep } from "../features/step";
+import { changeStep } from "../../features/step";
 import Image from "next/image";
 
 const Card = ({ name }: any) => {
