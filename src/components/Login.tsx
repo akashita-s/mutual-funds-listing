@@ -5,14 +5,14 @@ import styles from "../../styles/Home.module.css";
 import { changeStep } from "../features/step";
 
 function Login() {
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(login({ email: email, password: password }));
+    dispatch(login({ name: name, password: password }));
     dispatch(changeStep("dashboard"));
   };
 
@@ -25,12 +25,13 @@ function Login() {
         }}
       >
         <div>
-          <p>Enter Email: </p>
+          <p>Enter User Name: </p>
           <input
             className={styles.input}
-            type="email"
+            type="name"
+            required
             onChange={(event) => {
-              setEmail(event.target.value);
+              setName(event.target.value);
             }}
             placeholder="Enter your registered e-mail"
           ></input>
@@ -50,6 +51,15 @@ function Login() {
         <div className={styles.subcontainer}>
           <input className={styles.checkbox} type="checkbox" required />
           <p>I am not a Robot</p>
+        </div>
+        <div className={styles.link}>
+          <p
+            onClick={() => {
+              dispatch(changeStep("signup"));
+            }}
+          >
+            Not a user already? Sign in &#8811;
+          </p>
         </div>
         <button
           type="submit"

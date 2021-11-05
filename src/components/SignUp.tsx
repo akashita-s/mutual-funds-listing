@@ -9,12 +9,13 @@ function SignUp() {
   const [number, setNumber] = useState("");
   const [referal, setReferal] = useState("");
   const [email, setEmail] = useState("");
+  const [gender, setGender] = useState('Male')
   const dispatch = useDispatch();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(
-      login({ name: name, email: email, number: number, referal: referal })
+      login({ name: name, email: email, number: number, gender: gender, referal: referal })
     );
     dispatch(changeStep("dashboard"));
   };
@@ -28,7 +29,7 @@ function SignUp() {
         }}
       >
         <div>
-          <p>Enter Name: </p>
+          <p>Enter User Name: </p>
           <input
             className={styles.input}
             type="name"
@@ -50,6 +51,20 @@ function SignUp() {
               setNumber(event.target.value);
             }}
           ></input>
+        </div>
+        <div>
+          <p>Choose Gender: </p>
+          <input
+            className={styles.radio}
+            type="radio"
+          ></input>
+          <label>Male</label>
+          <input
+            className={styles.radio}
+            type="radio"
+            onClick={() => {setGender('Female')}}
+          ></input>
+          <label>Female</label>
         </div>
         <div>
           <p>Enter Email: </p>
@@ -77,6 +92,15 @@ function SignUp() {
         <div className={styles.subcontainer}>
           <input className={styles.checkbox} type="checkbox" required />
           <p>Agree to privacy policy?</p>
+        </div>
+        <div className={styles.link}>
+          <p
+            onClick={() => {
+              dispatch(changeStep("login"));
+            }}
+          >
+            Already a user? Log in &#8811;
+          </p>
         </div>
         <button
           type="submit"

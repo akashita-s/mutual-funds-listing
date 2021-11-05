@@ -18,3 +18,14 @@
 .image{
     margin-right: 2rem;
 }
+
+.link {
+  color: rgb(102, 102, 211);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.subHeading{
+  padding-left: 1rem;
+  color: rgb(150, 150, 150);
+}
