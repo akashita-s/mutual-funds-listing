@@ -33,7 +33,7 @@ function Login() {
             onChange={(event) => {
               setName(event.target.value);
             }}
-            placeholder="Enter your registered e-mail"
+            placeholder="Enter your registered username"
           ></input>
         </div>
         <div>

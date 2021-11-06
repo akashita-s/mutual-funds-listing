@@ -1,73 +1,73 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
+import { useSelector } from "react-redux";
 
 function Chart() {
+  const [today, setToday] = useState("");
+  const link = useSelector((state: any) => state.fund.value.link);
 
-const data = {
-    labels: ["2016", "2017", "2018", "2019", "2020", "2021"],
+  const [chartData, setChartdata] = useState({
+    labels: [],
     datasets: [
       {
-        label: "Nav",
-        data: [70, 101, 80, 108, 155, 136, 167, 200, 199, 178, 200, 206 ],
+        label: "",
+        data: [],
         fill: true,
-        backgroundColor: "rgb(145, 109, 109, 0.3)",
-        borderColor: "rgba(145, 109, 109,1)",
+        backgroundColor: "",
+        borderColor: "",
       },
     ],
-  };
-
-  const [chartData, setChartdata] = useState({});
+  });
 
   const chart = () => {
     let empSal: any = [];
     let empAge: any = [];
 
     axios
-      .get("https://api.mfapi.in/mf/102414")
-      .then((res) => {
-        console.log(res);
-        for (const dataObj of res.data.data) {
-          empSal.push(parseInt(dataObj.nav));
-          empAge.push(parseInt(dataObj.date));
+      .get(link)
+      .then(function (response) {
+        for (const dataObj of response.data.data) {
+          empSal.push(dataObj.date);
+          empAge.push(parseInt(dataObj.nav));
         }
+        setToday(empAge.slice(0, 1));
+        const nav = empAge.slice(0, 20);
+        const dates = empSal.slice(0, 20);
+        console.log(nav);
+        console.log(dates);
+
         setChartdata({
-          labels: empAge,
+          labels: dates.reverse(),
           datasets: [
             {
-              label: "salary",
-              data: empSal,
-              backgroundColor: ["black"],
-              borderWidth: 4,
+              label: "Nav",
+              data: nav.reverse(),
+              fill: true,
+              backgroundColor: "rgb(145, 109, 109, 0.3)",
+              borderColor: "rgba(145, 109, 109,1)",
             },
           ],
         });
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
       });
-    setChartdata({
-      labels: empAge,
-      datasets: [
-        {
-          label: "salary",
-          data: empSal,
-          backgroundColor: ["black"],
-          borderWidth: 4,
-        },
-      ],
-    });
   };
 
   useEffect(() => {
     chart();
   }, []);
 
-  
   return (
     <div>
       <h3>Data based analysis: </h3>
-      <Line data={data} />
+      <h3>Rate Today: {today}</h3>
+      <Line data={chartData} />
     </div>
   );
 }
