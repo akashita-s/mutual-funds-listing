@@ -3,7 +3,7 @@
 }
 
 .card {
-  margin: 1rem;
+  margin-top: 1rem;
   padding: 1rem;
   border-width: 5;
   border-radius: 0.3rem;
@@ -18,6 +18,13 @@
   display: flex;
 }
 
+.input{
+  height: 3rem;
+  width: 14rem;
+  padding-left: 1rem;
+  width: 100%;
+}
+
 .image{
     margin-right: 2rem;
 }
@@ -28,7 +35,3 @@
   cursor: pointer;
 }
 
-.subHeading{
-  padding-left: 1rem;
-  color: rgb(150, 150, 150);
-}

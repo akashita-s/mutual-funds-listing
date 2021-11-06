@@ -65,8 +65,9 @@ function Chart() {
 
   return (
     <div>
-      <h3>Data based analysis: </h3>
+      
       <h3>Rate Today: {today}</h3>
+      <h3>Data based analysis(last 20 days): </h3>
       <Line data={chartData} />
     </div>
   );
